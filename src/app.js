@@ -125,6 +125,8 @@ function imprimirCartasAleatorio() {
 
 window.onload = function() {
   //write your code here
+  const generarCartas = document.querySelector("#generar-cartas");
+
   generarCartas.addEventListener("click", function() {
     //generarCartaAleatorio();
     imprimirCartasAleatorio();
