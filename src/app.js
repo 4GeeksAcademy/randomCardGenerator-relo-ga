@@ -125,6 +125,12 @@ function imprimirCartasAleatorio() {
 
 window.onload = function() {
   //write your code here
+  let timer = setInterval(imprimirCartasAleatorio, 10000);
+  //setTimeout(clearInterval(timer), 10000);
+  setTimeout(function() {
+    clearInterval(timer);
+  }, 30000);
+
   const generarCartas = document.querySelector("#generar-cartas");
 
   generarCartas.addEventListener("click", function() {
