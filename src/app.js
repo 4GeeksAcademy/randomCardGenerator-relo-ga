@@ -52,7 +52,7 @@ function generarCartaAleatorio() {
     pintaAbajo.style.color = "black";
     numero.style.color = "black";
   }
-
+  /*
   let div = `
       <div class="card d-flex justify-content-center col-2 m-3">
         <div class="card-body">
@@ -68,6 +68,7 @@ function generarCartaAleatorio() {
         </div>
       </div>
   `;
+  */
 }
 
 function imprimirCartasAleatorio() {
@@ -121,12 +122,20 @@ function imprimirCartasAleatorio() {
 
   const imprimir = document.querySelector("#imprimirCards");
   imprimir.appendChild(divCard);
+
+  //Width y heigth
+  let inputAncho = document.querySelector("#inputWidth").value;
+  let inputAlto = document.querySelector("#inputHeight").value;
+
+  divCard.style.width = inputAncho + "px";
+  divCard.style.height = inputAlto + "px";
+
+  console.log(inputWidth + "-" + inputHeight);
 }
 
 window.onload = function() {
   //write your code here
   let timer = setInterval(imprimirCartasAleatorio, 10000);
-  //setTimeout(clearInterval(timer), 10000);
   setTimeout(function() {
     clearInterval(timer);
   }, 30000);
