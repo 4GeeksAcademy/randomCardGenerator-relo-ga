@@ -22,7 +22,7 @@ const valores = [
   "K"
 ];
 
-function generarNumeroAl(lista) {
+function generarNumeroAleatorio(lista) {
   let numeroAleatorio = Math.floor(Math.random() * lista.length);
 
   return lista[numeroAleatorio];
@@ -33,8 +33,8 @@ function generarCartaAleatorio() {
   const pintaAbajo = document.querySelector("#pintaAbajo");
   const numero = document.querySelector("#numero");
 
-  let randomPintas = generarNumeroAl(pintas);
-  let randomNumero = generarNumeroAl(valores);
+  let randomPintas = generarNumeroAleatorio(pintas);
+  let randomNumero = generarNumeroAleatorio(valores);
 
   pintaArriba.innerHTML = randomPintas;
   pintaAbajo.innerHTML = randomPintas;
@@ -52,28 +52,11 @@ function generarCartaAleatorio() {
     pintaAbajo.style.color = "black";
     numero.style.color = "black";
   }
-  /*
-  let div = `
-      <div class="card d-flex justify-content-center col-2 m-3">
-        <div class="card-body">
-          <div>
-            <span id="pintaArriba"></span>
-          </div>
-          <div class="card-text text-center">
-            <p class="mb-0" id="numero"></p>
-          </div>
-          <div class="d-flex justify-content-end">
-            <span id="pintaAbajo"></span>
-          </div>
-        </div>
-      </div>
-  `;
-  */
 }
 
 function imprimirCartasAleatorio() {
-  let rPintas = generarNumeroAl(pintas);
-  let rNumero = generarNumeroAl(valores);
+  let valoresPintas = generarNumeroAleatorio(pintas);
+  let valoresNumero = generarNumeroAleatorio(valores);
 
   let divCard = document.createElement("div");
   divCard.classList = "card d-flex justify-content-center col-2 m-3";
@@ -83,14 +66,14 @@ function imprimirCartasAleatorio() {
 
   let divPintaArriba = document.createElement("div");
   let spanPintaArriba = document.createElement("span");
-  spanPintaArriba.innerHTML = rPintas;
+  spanPintaArriba.innerHTML = valoresPintas;
 
   divPintaArriba.appendChild(spanPintaArriba);
 
   let divTexto = document.createElement("div");
   divTexto.classList = "card-text text-center";
   let numeroTexto = document.createElement("p");
-  numeroTexto.innerText = rNumero;
+  numeroTexto.innerText = valoresNumero;
 
   divTexto.appendChild(numeroTexto);
 
@@ -98,17 +81,17 @@ function imprimirCartasAleatorio() {
   divPintaAbajo.classList = "d-flex justify-content-end";
 
   let spanPintaAbajo = document.createElement("span");
-  spanPintaAbajo.innerHTML = rPintas;
+  spanPintaAbajo.innerHTML = valoresPintas;
   spanPintaAbajo.style.transform = "rotate(180deg)";
 
   divPintaAbajo.appendChild(spanPintaAbajo);
 
-  if (rPintas == "♦" || rPintas == "♥") {
+  if (valoresPintas == "♦" || valoresPintas == "♥") {
     numeroTexto.style.color = "red";
     spanPintaArriba.style.color = "red";
     spanPintaAbajo.style.color = "red";
   }
-  if (rPintas == "♠" || rPintas == "♣") {
+  if (valoresPintas == "♠" || valoresPintas == "♣") {
     numeroTexto.style.color = "black";
     spanPintaArriba.style.color = "black";
     spanPintaAbajo.style.color = "black";
@@ -134,14 +117,14 @@ function imprimirCartasAleatorio() {
 }
 
 window.onload = function() {
-  //write your code here
+  // imprime cartas cada 10 segundos durante 30 segundos
   let timer = setInterval(imprimirCartasAleatorio, 10000);
   setTimeout(function() {
     clearInterval(timer);
   }, 30000);
 
   const generarCartas = document.querySelector("#generar-cartas");
-
+  // Genera cartas al apretar el botón
   generarCartas.addEventListener("click", function() {
     //generarCartaAleatorio();
     imprimirCartasAleatorio();
